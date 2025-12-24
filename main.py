@@ -6,8 +6,11 @@ from stats import (
 )
 
 
-def main(book_path=None):
-
+def main():
+    if not len(sys.argv) == 2:
+        print("Usage: python3 main.py <path_to_book>")
+        sys.exit(1)
+    book_path = sys.argv[1]
     text = get_book_text(book_path)
     num_words = get_num_words(text)
     chars_dict = get_chars_dict(text)
@@ -33,8 +36,5 @@ def print_report(book_path, num_words, chars_sorted_list):
 
     print("============= END ===============")
 
-if not len(sys.argv) == 2:
-    print("Usage: python3 main.py <path_to_book>")
-    sys.exit(1)
-book_path = sys.argv[1]
-main(book_path=book_path)
+
+main()
